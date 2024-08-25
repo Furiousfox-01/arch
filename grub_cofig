@@ -1,0 +1,26 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+#menuentry "Arch Linux ISO" {
+#  set isofile="/archlinux-2024.08.01-x86_64.iso"
+#  loopback loop $isofile
+#  linux (loop)/arch/boot/x86_64/vmlinuz-linux archisolabel=ARCH_202408 img_dev=/dev/nvme0n1p2 img_loop=$isofile
+#  initrd (loop)/arch/boot/x86_64/initramfs-linux.img
+#}
+
+
+
+menuentry "Arch Linux" {
+    set root=(hd0,nvme0n1p3)
+    linux /boot/vmlinuz-linux root=/dev/nvme0n1p3
+    initrd /boot/initramfs-linux.img
+}
+
+#menuentry "Arch Linux1" {
+#    set root=(hd0,1)
+#    linux /vmlinuz-linux root=/dev/nvme0n1p3 rw
+#    initrd /initramfs-linux.img
+#}
+
